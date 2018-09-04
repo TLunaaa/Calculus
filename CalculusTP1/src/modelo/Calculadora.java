@@ -7,6 +7,13 @@ import vista.IFrontEnd;
 public class Calculadora {
     
     IFrontEnd ventana;
+
+
+    /**
+     * Ejecuta las instrucciones enviadas en un arreglo de strings. <br>
+     * <b> post: </b> el metodo se detiene al encontrar un error.
+     * @param s es el array de strings - s[] != null
+     */
     public void ejecutar(String[] s){
         try {
             for (int i=0;i<s.length;i++){
@@ -19,7 +26,14 @@ public class Calculadora {
                 ventana.imprimeError("Error Detectado: " + e.toString());
         }
     }
-    
+
+    /**
+     * Determina los comandos dentro de una cadena y los ejecuta, si es posible <br>
+     * <b> post: </b> el metodo se detiene al encontrar un error.
+     * @param cadena es el string que contiene los comandos - cadena != null y cadena != ""
+     * @return 
+     * @throws TError
+     */
     public Matriz interpretarComandos(String cadena) throws TError{
         //Comandos binarios (entre dos matrices): <operacion> <matriz> <matriz> [<matriz>] <dispositivo>
         //Comandos unarios (aplicados a una matriz): <operacion> <matriz> [ <matriz> ] <dispositivo>
@@ -186,7 +200,16 @@ public class Calculadora {
         }
         return mayorj;
     }
-        
+    
+    /**
+         * Realiza la suma entre dos matrices.
+         * <b> pre: </b> las matrices no deben estar vacias.<br>
+         * <b> post: </b> devuelve la suma entre las dos matrices.<br>
+         * @param A - A != null.
+         * @param B - B != null.
+         * @return
+         * @throws TError
+         */    
     public  Matriz suma(Matriz A, Matriz B) throws TError{
             if(mismasDim(A, B)) {
                     Matriz suma = new Matriz(A.getFilas(), A.getColumnas());
@@ -200,7 +223,15 @@ public class Calculadora {
                     throw new TError(4);
             }		
     }
-    
+    /**
+         * Realiza la resta entre dos matrices.
+         * <b> pre: </b> las matrices no deben estar vacias. <br>
+         * <b> post: </b> devuelve la resta entre las dos matrices.<br>
+         * @param A - A != null;
+         * @param B - B != null;
+         * @return
+         * @throws TError
+         */
     public  Matriz resta(Matriz A, Matriz B) throws TError{
             if(mismasDim(A, B)) {
                     Matriz resta = new Matriz(A.getFilas(), B.getColumnas());
@@ -214,7 +245,15 @@ public class Calculadora {
                     throw new TError(4);
             }
     }
-    
+    /**
+         * Multiplica dos matrices.
+         * <b> pre: </b> las dos matrices no deben estar vacias.<br>
+         * <b> post: </b> devuelve en otra matriz el resultado de la multiplicacion.<br>
+         * @param A - A != null.<br>
+         * @param B - B != null.<br>
+         * @return
+         * @throws TError
+         */
     public  Matriz multiplicar(Matriz A, Matriz B) throws TError{
             if(multiplicable(A, B)) {
                     Matriz multip = new Matriz(A.getFilas(), B.getColumnas());
@@ -231,7 +270,13 @@ public class Calculadora {
                     throw new TError(4);
             }
     }
-    
+    /**
+         * Realiza la transtpuesta de una matriz dada.
+         * <b> pre: </b> la matriz de entrada no debe estar vacia.<br>
+         * <b> post: </b> devuelve como resultado la transpuesta de la matriz.<br>
+         * @param A - A != null.<br>
+         * @return
+         */
     public  Matriz transpuesta(Matriz A) {
             Matriz transpuesta = new Matriz(A.getColumnas(), A.getFilas());
             for(int i = 0; i < transpuesta.getFilas(); i++) {
