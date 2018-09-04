@@ -6,7 +6,7 @@ import vista.IFrontEnd;
 public class prueba {
 
 	public static void main(String[] args) {
-            System.out.println("hola");
+            System.out.println("chau");
 	    IFrontEnd ventana = new FrontEnd();
             Calculadora calc = new Calculadora();
 	    ventana.setCalc(calc);
