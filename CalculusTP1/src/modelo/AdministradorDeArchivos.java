@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 /**
  * Se encarga de leer y escribir los archivos .mat que contienen matrices de la carpeta \Datos. <br>
+ * Nacho cagon.
  * 
  */
 public class AdministradorDeArchivos {
