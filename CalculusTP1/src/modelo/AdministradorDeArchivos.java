@@ -9,11 +9,23 @@ import java.io.IOException;
 import java.util.Scanner;
 
 
+/**
+ * Se encarga de leer y escribir los archivos .mat que contienen matrices de la carpeta \Datos. <br>
+ * 
+ */
 public class AdministradorDeArchivos {
     public AdministradorDeArchivos() {
         super();
     }
-    
+
+
+    /**
+     * Busca y carga la matriz solicitada por el usuario. <br>
+     * <b>post: </b> Se cargo el archivo .mat que contenia a la matriz en un objeto Matriz.
+     * @param nombremat es el nombre de la matriz a buscar. - nombremat != null y nombremat != ""
+     * @return un objeto del tipo Matriz ya cargada.
+     * @throws TError se lanza si el archivo nombremat.mat no existe. 
+     */
     public static Matriz cargaMatriz(String nombremat) throws TError {
         String nombrearch = null;
         String descripcion = null;
@@ -61,7 +73,13 @@ public class AdministradorDeArchivos {
             throw new TError(3);
         }
     }
-    
+
+    /**
+     * Guarda el la matriz como un archivo fisico en la carpeta \Datos donde se encuentra el ejecutable del programa. <br>
+     * <b>post: </b> Se almaceno el archivo dentro de la carpeta con la Matriz dentro.
+     * @param mat es el objeto del tipo Matriz que se desea almacenar.- mat != null.
+     * @throws TError se lanza si ya existe algun archivo con otra Matriz con el mismo nombre.
+     */
     public static void guardaMatriz(Matriz mat) throws TError{
         FileWriter fwArchivo;
         File flArchivo;
