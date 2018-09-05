@@ -83,6 +83,7 @@ public class AdministradorDeArchivos {
      * @throws TError se lanza si ya existe algun archivo con otra Matriz con el mismo nombre.
      */
     public static void guardaMatriz(Matriz mat) throws TError{
+        assert mat!=null : "La matriz no puede ser nula";
         FileWriter fwArchivo;
         File flArchivo;
         BufferedWriter bwEscritor;
