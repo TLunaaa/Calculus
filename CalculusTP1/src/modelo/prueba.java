@@ -13,5 +13,4 @@ public class prueba {
             calc.setVentana(ventana);
 	    ventana.arranca();
 	}
-
 }

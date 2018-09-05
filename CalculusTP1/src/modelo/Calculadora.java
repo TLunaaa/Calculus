@@ -7,6 +7,13 @@ import vista.IFrontEnd;
 public class Calculadora {
     
     IFrontEnd ventana;
+
+
+    /**
+     * Ejecuta las instrucciones enviadas en un arreglo de strings. <br>
+     * <b> post: </b> el metodo se detiene al encontrar un error.
+     * @param s es el array de strings - s[] != null
+     */
     public void ejecutar(String[] s){
         try {
             for (int i=0;i<s.length;i++){
@@ -20,12 +27,12 @@ public class Calculadora {
         }
     }
     /**
-     * Interpreta los comandos ingresados.
-     * @param cadena
-     * @return
-     * @throws TError
+     * Determina los comandos dentro de una cadena y los ejecuta, si es posible <br>
+     * <b> post: </b> el metodo se detiene al encontrar un error.
+     * @param cadena es el string que contiene los comandos - cadena != null y cadena != ""
+     * @return devuelve la matriz resultado
+     * @throws TError excepcion que se produce al detectar un error
      */
-    
     public Matriz interpretarComandos(String cadena) throws TError{
         //Comandos binarios (entre dos matrices): <operacion> <matriz> <matriz> [<matriz>] <dispositivo>
         //Comandos unarios (aplicados a una matriz): <operacion> <matriz> [ <matriz> ] <dispositivo>
@@ -90,7 +97,13 @@ public class Calculadora {
             throw e;
         }
     }
-    
+
+    /**
+     * Recibe una linea comando y devuelve los argumentos en un ArrayList de strings <b>.
+     * @param cadena es el string que contiene los comandos - cadena != null y cadena != ""
+     * @return Devuelve un ArrayList de strings con los argumentos
+     * @throws TError excepcion que se produce al detectar un error
+     */
     public ArrayList<String> validaComando(String cadena) throws TError{
         ArrayList<String> comandos = new ArrayList<String>();
         String[] subcadenas = cadena.split("<");
@@ -120,10 +133,23 @@ public class Calculadora {
         return comandos;
     }
 
+    /**
+     * Establece el atributo ventana de this como el parametro ventana.
+     * <b> pre: </b> la ventana no debe ser nula
+     * @param ventana es el parametro que se asignar� - ventana != null
+     */
     public void setVentana(IFrontEnd ventana) {
         this.ventana = ventana;
     }
 
+    /**
+         * Realiza el determinante de una matriz.
+         * <b> pre: </b> las matriz no debe estar vacia y debe ser cuadrada.<br>
+         * <b> post: </b> devuelve el determinante de una matriz.<br>
+         * @param A primera matriz - A != null.
+         * @return Devuelve el resultado
+         * @throws TError excepcion que se produce al detectar un error
+         */ 
     public int determinante(Matriz A) throws TError{
         int res=0;
         int j=0;
@@ -164,7 +190,15 @@ public class Calculadora {
             }
         }
     }
-    
+
+    /**
+     * Realiza un determinante de 3x3 de una matriz
+     * <b> pre: </b> La matriz no es nula y es cuadrada de 3x3
+     * <b> post: </b> devuelve el determinante de una matriz 3x3
+     * @param A matriz a procesar
+     * @return devuelve le resultado
+     * @throws TError excepcion que se produce al detectar un error
+     */
     public int determinante3x3(Matriz A) throws TError{
         int i,j=0;
         int res;
@@ -219,16 +253,17 @@ public class Calculadora {
             }
         }
         return mayorj;
-    }
+    }    
     /**
-     * Realiza la suma entre dos matrices.<br>
-     * <b> pre: </b> las matrices no deben estar vacias.<br>
-     * <b> post: </b> devuelve la suma entre las dos matrices.<br>
-     * @param A - A != null.
-     * @param B - B != null.
-     * @return
-     * @throws TError
-     */
+         * Realiza la suma entre dos matrices.
+         * <b> pre: </b> las matrices no deben estar vacias.<br>
+         * <b> post: </b> devuelve la suma entre las dos matrices.<br>
+         * @param A - A != null.
+         * @param B - B != null.
+         * @return
+         * @throws TError excepcion que se produce al detectar un error
+         */    
+
     public  Matriz suma(Matriz A, Matriz B) throws TError{
         assert A != null:"Matriz de entrada invalida";
         assert B != null:"Matriz de entrada invalida";
@@ -244,16 +279,16 @@ public class Calculadora {
                     throw new TError(4);
             }		
     }
-    
+
     /**
-     * Realiza la resta entre dos matrices.
-     * <b> pre: </b> las matrices no deben estar vacias. <br>
-     * <b> post: </b> devuelve la resta entre las dos matrices.<br>
-     * @param A - A != null;
-     * @param B - B != null;
-     * @return
-     * @throws TError
-     */
+         * Realiza la resta entre dos matrices.
+         * <b> pre: </b> las matrices no deben estar vacias. <br>
+         * <b> post: </b> devuelve la resta entre las dos matrices.<br>
+         * @param A - A != null;
+         * @param B - B != null;
+         * @return
+         * @throws TError excepcion que se produce al detectar un error
+         */
     public  Matriz resta(Matriz A, Matriz B) throws TError{
         assert A != null:"Matriz de entrada invalida";
         assert B != null:"Matriz de entrada invalida";
@@ -269,17 +304,15 @@ public class Calculadora {
                     throw new TError(4);
             }
     }
-    
     /**
-     * Multiplica dos matrices.
-     * <b> pre: </b> las dos matrices no deben estar vacias.<br>
-     * <b> post: </b> devuelve en otra matriz el resultado de la multiplicacion.<br>
-     * @param A - A != null.<br>
-     * @param B - B != null.<br>
-     * @return
-     * @throws TError
-     */
-    
+         * Multiplica dos matrices.
+         * <b> pre: </b> las dos matrices no deben estar vacias.<br>
+         * <b> post: </b> devuelve en otra matriz el resultado de la multiplicacion.<br>
+         * @param A - A != null.<br>
+         * @param B - B != null.<br>
+         * @return
+         * @throws TError excepcion que se produce al detectar un error
+         */
     public  Matriz multiplicar(Matriz A, Matriz B) throws TError{
         
         assert A != null: "Matriz de entrada vacia";
@@ -299,14 +332,13 @@ public class Calculadora {
                     throw new TError(4);
             }
     }
-    
     /**
-     * Realiza la transtpuesta de una matriz dada. <br>
-     * <b> pre: </b> la matriz de entrada no debe estar vacia.<br>
-     * <b> post: </b> devuelve como resultado la transpuesta de la matriz.<br>
-     * @param A - A != null.<br>
-     * @return
-     */
+         * Realiza la transtpuesta de una matriz dada.
+         * <b> pre: </b> la matriz de entrada no debe estar vacia.<br>
+         * <b> post: </b> devuelve como resultado la transpuesta de la matriz.<br>
+         * @param A - A != null.<br>
+         * @return
+         */
     public  Matriz transpuesta(Matriz A) {
         assert A != null: "Matriz de entrad invalida";
             Matriz transpuesta = new Matriz(A.getColumnas(), A.getFilas());
