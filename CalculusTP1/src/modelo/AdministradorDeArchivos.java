@@ -27,6 +27,8 @@ public class AdministradorDeArchivos {
      * @throws TError se lanza si el archivo nombremat.mat no existe. 
      */
     public static Matriz cargaMatriz(String nombremat) throws TError {
+        assert nombremat != null : "No se puede ingresar un nombre nulo.";
+        assert nombremat.equals("") : "No se puede ingresar un nombre vacio.";
         String nombrearch = null;
         String descripcion = null;
         int i,j,filas,columnas;
