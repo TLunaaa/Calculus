@@ -11,8 +11,12 @@ import modelo.Matriz;
  * @author Usuario
  */
 public class FrontEnd extends javax.swing.JFrame implements IFrontEnd{
-    Calculadora calc = new Calculadora();
-    /** Creates new form FrontEnd */
+    /**
+     * Referencia a un elemento de tipo Calculadora.
+     */
+    Calculadora calc;
+   
+    /** Creates new form FrontEnd */ 
     public FrontEnd() {
         initComponents();
         this.setLocationRelativeTo(null);
